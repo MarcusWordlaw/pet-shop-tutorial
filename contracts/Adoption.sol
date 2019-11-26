@@ -1,4 +1,4 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.5.0;
 
 //Class called adoption, in solidity classes are contracts
 contract Adoption {
@@ -6,11 +6,11 @@ contract Adoption {
     //Address array that takes in 5 addresses, fixed length
     //State variable that is defined as public will have a getter function automagically defined
     address[5] public adopters;
-    
+
     //Setter function for address(user) to adopt pet and change state variable
     //public, any external address can call
-    //returns and int to indicate success
-    //validation 
+    //In solidity function parameters and output must be specified
+    //validation
     //msg.sender equals the address that calls the function, and is set to val of pedId index
     //returns pedId that user supplies
     //returns one value
@@ -18,7 +18,7 @@ contract Adoption {
     public
     returns(uint)
     {
-        require(petId >= 0 && petId <= 4);
+        require(petId >= 0 && petId <= 4, "PetId between 0 and 4");
         adopters[petId] = msg.sender;
         return petId;
     }
@@ -29,10 +29,11 @@ contract Adoption {
     //Public callable from any address
     //View function, does not modify the state of the contract, just reads and returns value
     //Since no state change, zero gas, free to call
-    function getAdopters() 
-    public 
+    //Memory gives the data location for the variable
+    function getAdopters()
+    public
     view
-    returns(address[5])
+    returns(address[5] memory)
     {
         return adopters;
     }
