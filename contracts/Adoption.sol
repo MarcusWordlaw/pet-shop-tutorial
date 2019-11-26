@@ -5,7 +5,7 @@ contract Adoption {
     //Declaration of state variable
     //Address array that takes in 5 addresses, fixed length
     //State variable that is defined as public will have a getter function automagically defined
-    address[5] public adopters;
+    address[16] public adopters;
 
     //Setter function for address(user) to adopt pet and change state variable
     //public, any external address can call
@@ -33,7 +33,7 @@ contract Adoption {
     function getAdopters()
     public
     view
-    returns(address[5] memory)
+    returns(address[16] memory)
     {
         return adopters;
     }
